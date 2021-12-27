@@ -1,7 +1,8 @@
 const {create,
      getUserByUserId,
      getUsers,
-     getUsersByUserEmail
+     getUsersByUserEmail,
+     getAdminGenerale
     } = require ( "./user.service");
 
 const {genSaltSync, hashSync, compareSync } = require ("bcrypt");
@@ -85,6 +86,43 @@ module.exports = {
                 })
             } else{
                 return res.json({
+                    success : 0,
+                    data : "invalid email or password"
+                })
+            }
+        })
+    },
+
+    getAdminGenerale : (req, res)=>{
+
+        const body = req.body;
+        getAdminGenerale(body.email, (err, results)=>{
+
+            if(err){
+                console.log(err);
+            }
+            if(!results){
+
+                return res.json({
+                    sucess : 0,
+                    message : "invalid email or password"
+                })
+            }
+            // const result = compareSync(body.password,results.password)
+            if (body.password == results.password){
+                results.password = undefined ;
+                const jsontoken = sign({ result : results}, "qwz1234",{
+                    expiresIn : "1h"
+                });
+
+                return res.json({
+                    success : 1,
+                    message : "logged successfully",
+                    token : jsontoken
+                })
+            } else{
+                return res.json({
+                    dat : results,
                     success : 0,
                     data : "invalid email or password"
                 })
