@@ -27,9 +27,9 @@ module.exports = {
     // console.log(token);
     const decoded = decode(token);
     // console.log(decoded);
-    const admin = decoded.result.role;
+    const role = decoded.result.role;
     // console.log(admin);
-    if (admin == 1) {
+    if (role ==  1) {
       getLogs((err, results) => {
         if (err) {
           console.log(err);
