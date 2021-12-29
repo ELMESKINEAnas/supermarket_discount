@@ -54,7 +54,7 @@ module.exports = {
             return callback(null, results)
         })
     },
-    getAllRaspRayons : callback => {
+    getAllRespRayons : callback => {
         pool.query(`SELECT * FROM responsable_rayon`,
         [],
         (error, results, fields) => {

@@ -1,7 +1,9 @@
-const { createPromos, createRespRayon, deletePromo, getAllPromos, getAllRaspRayons } = require("./adminCentre.service");
+const { createPromos, createRespRayon, deletePromo, getAllPromos, getAllRespRayons } = require("./adminCentre.service");
 
 const { genSaltSync, hashSync } = require("bcrypt");
-// const { sign } = require("jsonwebtoken")
+
+const createlog = require ("../logs/logs.controllers");
+const { decode } = require("jsonwebtoken");
 
 module.exports = {
     createRespRayon: (req, res) => {
@@ -24,6 +26,13 @@ module.exports = {
     },
     createPromo: (req, res) => {
     const body = req.body;
+    const token = req.headers.authorization.split(" ")[1];
+    const decoded = decode(token);
+    const id = decoded.result.id;
+    
+    let pourcentage =+ body.pourcentage;
+    body.fidelite = pourcentage*10;
+    console.log(decoded.result);
 
         createPromos(body, (err, results) => {
             if (err) {
@@ -70,8 +79,8 @@ module.exports = {
             })
         })
     },
-    getAllRaspRayons : (req, res) => {
-        getAllRaspRayons((err, results) => {
+    getAllRespRayons : (req, res) => {
+        getAllRespRayons((err, results) => {
             if(err){
                 console.log(err);
                 returrn;
