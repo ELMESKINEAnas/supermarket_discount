@@ -5,9 +5,9 @@ const { checkToken } = require("../../auth/token_validation");
 
 router.post("/createRespRayon", createRespRayon);
 router.get("/getAllRespRayon", getAllRespRayons);
-router.post("/createPromo", createPromo);
+router.post("/createPromo",checkToken, createPromo);
 router.delete("/deletePromo", deletePromo);
-router.get("/getAllPromos", getAllPromos);
+router.get("/getAllPromos",checkToken, getAllPromos);
 
 
 module.exports = router
