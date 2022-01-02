@@ -5,6 +5,10 @@ const { genSaltSync, hashSync } = require("bcrypt");
 const createlog = require ("../logs/logs.controllers");
 const { decode } = require("jsonwebtoken");
 
+
+
+
+
 module.exports = {
     createRespRayon: (req, res) => {
         const body = req.body;
@@ -45,7 +49,7 @@ module.exports = {
     const token = req.headers.authorization.split(" ")[1];
     const decoded = decode(token);
     
-    let pourcentage =+ body.pourcentage;
+    let pourcentage = + body.pourcentage;
     body.fidelite = pourcentage*10;
     console.log(decoded.result);
 
