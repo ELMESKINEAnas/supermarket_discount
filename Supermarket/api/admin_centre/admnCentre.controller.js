@@ -16,6 +16,7 @@ module.exports = {
         body.password = hashSync(body.password, salt);
 
         //decode token
+
     const token = req.headers.authorization.split(" ")[1];
     const decoded = decode(token);
         createRespRayon(body, (err, results) => {

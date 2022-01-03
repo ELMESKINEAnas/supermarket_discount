@@ -77,12 +77,13 @@ module.exports = {
                 results.password = undefined ;
                 const jsontoken = sign({ result : results}, "qwz1234",{
                     expiresIn : "1h"
+
                 });
 
                 return res.json({
                     success : 1,
                     message : "logged successfully",
-                    token : jsontoken
+                    token : jsontoken,
                 })
             } else{
                 return res.json({
