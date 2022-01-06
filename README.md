@@ -14,4 +14,4 @@ Critères de performance un qui respecte les standards du développement
 
 Modalités d'évaluation Savoir Programmer la Poo en JS et comprendre l'utilité de chaque objet
 --------------------
-lien Trello : <a href ="https://github.com/ELMESKINEAnas/supermarket_discount/tree/main/Trello"> Marjane Backend </a>
+lien Trello : <a href ="https://trello.com/b/a2DgAatl/marjane-backend-management"> Marjane Backend </a>
